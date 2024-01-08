@@ -1,0 +1,62 @@
+import java.util.Scanner;
+class Student{
+   String usn;
+   String name;
+   int marks[]= new int[6];
+   
+   void Details()
+   {
+Scanner s=new Scanner(System.in);
+System.out.println("Enter USN");
+usn=s.next();
+System.out.println("Enter Name");
+name=s.next();
+System.out.println("Enter marks for 6 subjects:");
+for(int i = 0; i < 6; i++)
+{
+System.out.print("Subject " + (i + 1) + ": ");
+marks[i]=s.nextInt();
+}
+   }
+   double percentage()
+   {
+int total=0;
+for(int i=0;i<6;i++)
+{
+total+=marks[i];
+}
+double p=total/6;
+return p;
+   }
+   void display()
+   {
+System.out.println("\nStudent Details:");
+        System.out.println("USN: " + usn);
+        System.out.println("Name: " + name);
+        System.out.println("Marks:");
+        for(int i = 0; i < 6; i++)
+        {
+System.out.println("Subject " + (i + 1) + ": " + marks[i]);
+        }
+        System.out.println("Percentage: "+ percentage() + "%");
+   }
+}
+class Lab1student
+{
+public static void main(String args[]){
+Scanner s = new Scanner(System.in);
+System.out.print("Enter the number of students: ");
+int n = s.nextInt();
+Student[] students = new Student[n];
+for (int i = 0; i < n; i++)
+{
+students[i] = new Student();
+System.out.println("\nEnter details for Student " + (i + 1) + ":");
+students[i].Details();
+}
+for (Student student : students)
+{
+student.display();
+}
+}
+}
